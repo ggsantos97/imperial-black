@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import com.imperialblackapi.service.ComandaService;
 
 
 @RestController
+@RequestMapping("/comandas")
 public class ComandaController {
 	
 	@Autowired
@@ -25,7 +27,11 @@ public class ComandaController {
 	 * ArrayList<>(); comandas.addAll(service.listarComandas()); return
 	 * ResponseEntity.ok().build(); }
 	 */
-	
+	@GetMapping
+	@ResponseBody
+	public String init() {
+		return "Olá essa é uma api REST ";
+	}
 //	@GetMapping
 //	@ResponseBody
 //	public Iterable<Comanda> listarComandas(){
