@@ -17,6 +17,7 @@ public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 		@Id @GeneratedValue(strategy = GenerationType.AUTO)
+		@Column(name="ID")
 		private Long id;
 		
 		@Column(name="PRODUTO") 
@@ -24,6 +25,7 @@ public class Produto implements Serializable{
 		
 		@Column(name="PRECO") 
 		private Integer preco;
+		
 		
 		public Long getId() {
 			return id;
@@ -43,7 +45,7 @@ public class Produto implements Serializable{
 		public void setPreco(Integer preco) {
 			this.preco = preco;
 		}
-		 
+	 
 		
 	
 }
