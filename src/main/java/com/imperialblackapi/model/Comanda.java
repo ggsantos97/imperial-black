@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -49,17 +52,19 @@ public class Comanda implements Serializable{
 	@Column(name="VALOR_TOTAL")
 	private Double valorTotal;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="ID_COMANDA")
+	@ManyToMany
+	@JoinTable(name="COMANDA_PRODUTOS",
+				joinColumns = @JoinColumn(name="ID_COMANDA"),
+				inverseJoinColumns = @JoinColumn(name="ID_PRODUTO"))
 	private List<Produto> produtos = new ArrayList<>();
 
-	public Long getIdComanda() {
-		return id;
-	}
+	 public Long getId() {
+			return id;
+		}
 
-	public void setIdComanda(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id) {
+			this.id = id;
+		}
 
 	public Boolean getStatus() {
 		return status;
@@ -101,9 +106,22 @@ public class Comanda implements Serializable{
 		this.valorTotal = valorTotal;
 	}
 
-	 public List<Produto> getProdutos() { return produtos; }
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<Produto> getProdutos() { 
+		 return produtos; 
+		 }
 	 
-	 public void setProdutos(List<Produto> produtos) { this.produtos = produtos; }
+	public void setProdutos(List<Produto> produtos) { 
+		 this.produtos = produtos;
+		 }
 	 
 	  
 	

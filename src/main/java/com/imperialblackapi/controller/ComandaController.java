@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +31,9 @@ public class ComandaController {
 	 */
 	@GetMapping
 	@ResponseBody
-	public String init() {
-		return "Olá essa é uma api REST ";
+	public Iterable<Comanda> findAll() {
+		return service.findAll();
+
 	}
 //	@GetMapping
 //	@ResponseBody
@@ -41,7 +43,7 @@ public class ComandaController {
 	
 	@PostMapping
 	@ResponseBody
-	public Comanda salvar(Comanda c) {
+	public Comanda salvar(@RequestBody Comanda c) {
 		return service.add(c);
 	}
 

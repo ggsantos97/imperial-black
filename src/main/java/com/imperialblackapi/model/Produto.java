@@ -1,12 +1,15 @@
 package com.imperialblackapi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,8 @@ public class Produto implements Serializable{
 		@Column(name="PRECO") 
 		private Integer preco;
 		
+		@ManyToMany(mappedBy = "produtos")
+		private List<Comanda> comandas = new ArrayList<>();
 		
 		public Long getId() {
 			return id;
