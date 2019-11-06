@@ -27,7 +27,7 @@ public class Produto implements Serializable{
 		private String produto;
 		
 		@Column(name="PRECO") 
-		private Integer preco;
+		private Double preco;
 		
 		@ManyToMany(mappedBy = "produtos")
 		private List<Comanda> comandas = new ArrayList<>();
@@ -44,10 +44,10 @@ public class Produto implements Serializable{
 		public void setProduto(String produto) {
 			this.produto = produto;
 		}
-		public Integer getPreco() {
+		public Double getPreco() {
 			return preco;
 		}
-		public void setPreco(Integer preco) {
+		public void setPreco(Double preco) {
 			this.preco = preco;
 		}
 	 
