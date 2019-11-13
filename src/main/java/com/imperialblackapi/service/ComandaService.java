@@ -31,4 +31,8 @@ public class ComandaService {
 	public Iterable<Comanda> findAll(){
 		return repository.findAll();
 	}
+	
+	public void delete(Long id) {
+		 repository.deleteById(id);
+	}
 }
