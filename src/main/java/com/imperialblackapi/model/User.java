@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="TB_USER")
 public class User implements Serializable{
@@ -19,18 +21,12 @@ public class User implements Serializable{
 		
 		private String nome;
 		private  String email;
+		@JsonIgnore
 		private String senha;
 		private String token;
 		private String tipo;
 		private String status;
 		
-		public User(String status) {
-			this.status = status;
-		}
-		
-		public User() {
-			
-		}
 		
 		public Long getId() {
 			return id;
