@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 	http.csrf().disable()
 	// não autentica essa solicitação específica 
-			.authorizeRequests().antMatchers("/auth")
+			.authorizeRequests().antMatchers("/auth","/register") //Lembrar de mexer aqui . .. 
 			.permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
 			.permitAll()
 			// todas as outras solicitações precisam ser autenticadas
